@@ -1,0 +1,75 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #0b0b13;
+  color: rgb(95, 95, 95);
+  font-family: "Montserrat", serif;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+#code {
+  font-size: 3rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  transition: opacity 1s ease-out; /* Transición suave al ocultar el code */
+  z-index: 2; /* Aseguramos que esté por encima del contenido */
+}
+
+#symbol-left,
+#symbol-right {
+  color: #61dafb;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.typing {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 1.4s ease-in-out forwards, fadeIn 0.6s ease-in-out forwards;
+  animation-delay: 1.2s; /* Espera 1 segundo antes de comenzar la animación */
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 7.7ch; /* "FRANDEV" tiene 7 caracteres */
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#content {
+  display: none;
+  opacity: 0;
+  position: absolute; /* Posición absoluta para evitar que afecte el flujo */
+  text-align: center;
+  transition: opacity 1s ease-in-out; /* Transición suave al mostrar content */
+  top: 0; /* Asegura que esté centrado respecto al body */
+  left: 50%;
+  transform: translateX(-50%); /* Centrado horizontal */
+  z-index: 1; /* Debe estar debajo del código */
+}
+
+#symbol-left,
+#symbol-right {
+  opacity: 0;
+  transition: opacity 3s ease;
+}
